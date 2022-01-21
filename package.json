@@ -1,0 +1,24 @@
+{
+  "name": "trainning-js-22-mercado",
+  "version": "1.0.0",
+  "description": "APIs para o mercadolivre",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/diegosantos17/trainning-js-22-mercado.git"
+  },
+  "author": "Diego",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/diegosantos17/trainning-js-22-mercado/issues"
+  },
+  "homepage": "https://github.com/diegosantos17/trainning-js-22-mercado#readme",
+  "dependencies": {
+    "express": "^4.17.2",
+    "mongoose": "^6.1.7"
+  }
+}
