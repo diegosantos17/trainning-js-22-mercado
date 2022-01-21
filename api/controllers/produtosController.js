@@ -1,4 +1,4 @@
-const read = (req, res, next) => {
+const read = async (req, res, next) => {
 	let produtos = [{
 		imageCapa:
 			"https://http2.mlstatic.com/D_Q_NP_859377-MLA48263979530_112021-AB.webp",
@@ -17,7 +17,7 @@ const read = (req, res, next) => {
 		estoque: 999,
 	}];
 
-	res.status(200).send(true);
+	res.status(200).send(produtos);
 };
 
 module.exports = {
