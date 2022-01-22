@@ -4,8 +4,8 @@ const find = async function (params = null) {
     try {
 
         let clause = {};
-        if(params && params.name){
-            clause["name"] = { $regex: '.*' + params.name + '.*' }
+        if(params && params.descricao != null && params.descricao != 'undefined'){
+            clause["descricao"] = { $regex: '.*' + params.descricao + '.*' }
         }
         
         let result = await produtos.find(clause);
@@ -50,11 +50,11 @@ const update = async function (user, id, item) {
 const destroy = async function (user, id) {
     try {
 
-        let profile = await profiles.findById(id);
+        let profile = await produtos.findById(id);
 
         profile.deletedAt = Date.now();        
 
-        let result = await profiles.findByIdAndUpdate(id, profile);
+        let result = await produtos.findByIdAndUpdate(id, profile);
         return result;
     } catch (exception) {
         throw exception;

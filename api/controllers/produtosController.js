@@ -22,7 +22,7 @@ const findById = async function (req, res, next) {
 
 const create = async function (req, res, next) {
 	try {
-		const result = await produtosService.create(req.userJwt, req.body);
+		const result = await produtosService.create(null, req.body);
 		res.status(201).send(result);
 	} catch (error) {
 		res.statusCode = error.errors ? 400 : 500;
