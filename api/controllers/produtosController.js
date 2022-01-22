@@ -1,25 +1,66 @@
-const read = async (req, res, next) => {
-	let produtos = [{
-		imageCapa:
-			"https://http2.mlstatic.com/D_Q_NP_859377-MLA48263979530_112021-AB.webp",
-		descricao: "Samsumg Galaxy",
-		precoOriginal: 1859,
-		categoria: "eletronico",
-		descontoEmPercentagem: 16,
-		parcelasMaximaSemJuros: 12,
-		freteFull: false,
-		imagens: [
-			"https://http2.mlstatic.com/D_Q_NP_723494-MLA47678954738_092021-AB.webp",
-			"https://http2.mlstatic.com/D_Q_NP_723494-MLA47678954738_092021-AB.webp",
-			"https://http2.mlstatic.com/D_Q_NP_723494-MLA47678954738_092021-AB.webp",
-			"https://http2.mlstatic.com/D_Q_NP_723494-MLA47678954738_092021-AB.webp",
-		],
-		estoque: 999,
-	}];
+const produtosService = require("../../services").produtosService;
 
-	res.status(200).send(produtos);
+const find = async function (req, res, next) {
+	try {
+		const produtos = await produtosService.find(req.query);
+		res.status(200).send(produtos);
+	} catch (error) {
+		res.statusCode = error.errors ? 400 : 500;
+		res.send(error);
+	}
+};
+
+const findById = async function (req, res, next) {
+	try {
+		const profile = await produtosService.findById(req.params.index);
+		res.status(200).send(profile);
+	} catch (error) {
+		res.statusCode = error.errors ? 400 : 500;
+		res.send(error);
+	}
+};
+
+const create = async function (req, res, next) {
+	try {
+		const result = await produtosService.create(req.userJwt, req.body);
+		res.status(201).send(result);
+	} catch (error) {
+		res.statusCode = error.errors ? 400 : 500;
+		res.send(error);
+	}
+};
+
+const update = async function (req, res, next) {
+	try {
+		const result = await produtosService.update(
+			req.userJwt,
+			req.params.index,
+			req.body
+		);
+		res.status(204).send(result);
+	} catch (error) {
+		res.statusCode = error.errors ? 400 : 500;
+		res.send(error);
+	}
+};
+
+const destroy = async function (req, res, next) {
+	try {
+		const result = await produtosService.destroy(
+			req.userJwt,
+			req.params.index
+		);
+		res.status(202).send(result);
+	} catch (error) {
+		res.statusCode = error.errors ? 400 : 500;
+		res.send(error);
+	}
 };
 
 module.exports = {
-	read,
+	find,
+	findById,
+	create,
+	update,
+	destroy,
 };

@@ -1,12 +1,18 @@
 const express = require("express");
-const routes = require('./api/routes');
 const cors = require("cors");
+const routes = require('./api/routes');
 
 var server = express();
 server.use(express.json());
 server.use(cors());
 server.use(routes);
 
-server.listen(3000, '0.0.0.0', (err) =>{
-	console.log("Servidor de pé na porta 3000");
-});
+var port = 3000;
+
+server.listen(port, '0.0.0.0', function (err) {
+    try {
+        console.log(`Listening port ${port}.`);
+    } catch (error) {
+
+    }
+})

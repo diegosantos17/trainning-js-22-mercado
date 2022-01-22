@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
 // Connect MongoDB at default port 27017.
-mongoose.connect('mongodb+srv://admin:admin@cluster0.jaxc2.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
+mongoose.connect('mongodb+srv://admin:admin@cluster0.jaxc2.mongodb.net/mercadolivre?retryWrites=true&w=majority', {
     useNewUrlParser: true
 }, (err) => {
     if (!err) {
@@ -15,6 +15,6 @@ mongoose.connect('mongodb+srv://admin:admin@cluster0.jaxc2.mongodb.net/myFirstDa
 
 const services = {};
 
-services.produtosService = require("./produtosService");
+services.produtosService = require('./produtosService');
 
 module.exports = services;
